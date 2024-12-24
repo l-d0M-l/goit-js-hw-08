@@ -70,12 +70,12 @@ const images = [
 const createGalleryCard = (card) => {
   return `
     <li class="gallery-item">
-        <a class="gallery-link" href = ${card.original}>
+        <a class="gallery-link" href = "${card.original}">
             <img       
             class="gallery-image"
-            src=${card.preview}
-            data-source = ${card.original}
-            alt=${card.description}> 
+            src="${card.preview}"
+            data-source = "${card.original}"
+            alt="${card.description}"> 
         </a>        
     </li>
     `;
@@ -91,9 +91,11 @@ gallery.insertAdjacentHTML("beforeend", galleryCards);
 gallery.addEventListener("click", galleyClickHandler);
 
 function galleyClickHandler(event) {
+  console.log(event.target);
+
   event.preventDefault();
 
-  if (event.target === event.currentTarget) {
+  if (event.target.nodeName !== "IMG") {
     return;
   }
 
